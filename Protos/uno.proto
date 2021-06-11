@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option csharp_namespace = "Uno";
+
+package uno;
+
+service Uno {
+  rpc Join (JoinRequest) returns (Player);
+  rpc EventListener(Player) returns (stream Event);
+  rpc Moviment(MovimentRequest) returns (MovimentReply);
+  rpc NextPlayer(Player) returns (Player);
+  rpc Uno(Player) returns (UnoReply);
+}
+
+message JoinRequest {
+  string id = 1;
+}
+
+message Card {
+    int32 color = 1;
+    int32 code = 2;
+}
+
+message MovimentRequest {
+    Player player = 1;
+    Card card = 2;
+}
+
+message JoinReply {
+
+}
+
+message Hand {
+  repeated Card cards = 1;
+}
+
+message MovimentReply {
+  bool error = 1;
+  Hand hand = 2;
+}
+
+message UnoReply {
+  bool won = 1;
+}
+
+message Event {
+  string description = 1;
+  bool lastEvent = 2;
+}
+
+message Player {
+  string id = 1;
+  int32 position = 2;
+  Hand hand = 3;
+}

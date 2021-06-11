@@ -2,14 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="..\Protos\uno.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.37.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Uno.Domain\Uno.Domain.csproj" />
+    <ProjectReference Include="..\Uno.Services\Uno.Services.csproj" />
+  </ItemGroup>
 </Project>
